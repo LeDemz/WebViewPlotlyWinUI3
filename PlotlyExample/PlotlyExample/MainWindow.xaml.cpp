@@ -3,6 +3,7 @@
 #if __has_include("MainWindow.g.cpp")
 #include "MainWindow.g.cpp"
 #endif
+#include <Python.h>
 
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
