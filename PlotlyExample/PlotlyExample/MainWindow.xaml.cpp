@@ -16,6 +16,21 @@ namespace winrt::PlotlyExample::implementation
     MainWindow::MainWindow()
     {
         InitializeComponent();
+
+        PyObject* pInt;
+
+        Py_Initialize();
+
+        char path[256] = "C:\\Users\\alexa\\OneDrive\\Polytechnique\\Documents2\\PlotlyExample\\PlotlyExample\\x64\\Debug\\PlotlyExample\\plotlyscript.py";
+        
+        PyObject* obj = Py_BuildValue("s", path);
+        FILE* file = _Py_fopen_obj(obj, "r+");
+        if (file != NULL) {
+            PyRun_SimpleFile(file, path);
+        }
+
+        Py_Finalize();
+
     }
 
     int32_t MainWindow::MyProperty()
@@ -30,6 +45,6 @@ namespace winrt::PlotlyExample::implementation
 
     void MainWindow::myButton_Click(IInspectable const&, RoutedEventArgs const&)
     {
-        myButton().Content(box_value(L"Clicked"));
+        //myButton().Content(box_value(L"Clicked"));
     }
 }
